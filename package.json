@@ -2,7 +2,7 @@
   "name": "pm-lua",
   "displayName": "PatchManager Lua",
   "description": "LuaLS stubs and workspace configuration for KSP2 PatchManager Lua patches.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "infinity-sys",
   "license": "MIT",
   "repository": {
