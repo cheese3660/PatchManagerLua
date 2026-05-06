@@ -1,0 +1,94 @@
+{
+  "name": "pm-lua",
+  "displayName": "PatchManager Lua",
+  "description": "LuaLS stubs and workspace configuration for KSP2 PatchManager Lua patches.",
+  "version": "0.1.0",
+  "publisher": "ksp2redux",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KSP2Redux/pm-lua-extension.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "ksp2",
+    "patchmanager",
+    "lua",
+    "luals",
+    "modding"
+  ],
+  "extensionDependencies": [
+    "sumneko.lua"
+  ],
+  "activationEvents": [
+    "onLanguage:lua",
+    "workspaceContains:**/*.lua"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pmLua.configureWorkspace",
+        "title": "PatchManager Lua: Configure Workspace",
+        "category": "PatchManager Lua"
+      },
+      {
+        "command": "pmLua.updateStubs",
+        "title": "PatchManager Lua: Update Stubs from Remote",
+        "category": "PatchManager Lua"
+      },
+      {
+        "command": "pmLua.openStubsFolder",
+        "title": "PatchManager Lua: Reveal Stubs Folder",
+        "category": "PatchManager Lua"
+      },
+      {
+        "command": "pmLua.resetStubs",
+        "title": "PatchManager Lua: Reset to Bundled Stubs",
+        "category": "PatchManager Lua"
+      }
+    ],
+    "configuration": {
+      "title": "PatchManager Lua",
+      "properties": {
+        "pmLua.repo": {
+          "type": "string",
+          "default": "KSP2Community/PatchManager",
+          "description": "GitHub `owner/repo` to pull stubs from."
+        },
+        "pmLua.branch": {
+          "type": "string",
+          "default": "unity",
+          "description": "Branch to pull stubs from. Will switch to `main` once PatchManager merges to main."
+        },
+        "pmLua.stubsPath": {
+          "type": "string",
+          "default": "Stubs",
+          "description": "Path within the repo containing the `.d.lua` stub files."
+        },
+        "pmLua.autoPrompt": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prompt to configure the workspace when a Lua file is opened in an unconfigured workspace."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "sync-stubs": "powershell -ExecutionPolicy Bypass -File ./scripts/sync-stubs.ps1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
